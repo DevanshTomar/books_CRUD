@@ -59,7 +59,7 @@ def delete_book(book_title: str):
             BOOKS.pop(i)
             return {"data": "Book deleted"}
 
-@app.get("/books/author/all/{book_author}")
+@app.get("/books/by_author/{book_author}")
 def get_book_by_author(book_author: str):
     books_with_author = []
 
