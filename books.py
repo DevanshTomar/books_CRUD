@@ -52,9 +52,19 @@ def update_book(udated_book=Body()):
             BOOKS[i] = udated_book
             return udated_book
 
-@app.delete("/books/delete_bool/{book_title}")
+@app.delete("/books/delete_book/{book_title}")
 def delete_book(book_title: str):
     for i, book in enumerate(BOOKS):
         if book['title'].casefold() == book_title.casefold():
             BOOKS.pop(i)
             return {"data": "Book deleted"}
+
+@app.get("/books/author/all/{book_author}")
+def get_book_by_author(book_author: str):
+    books_with_author = []
+
+    for book in BOOKS:
+        if book['author'].casefold() == book_author.casefold():
+            books_with_author.append(book)
+    
+    return books_with_author
